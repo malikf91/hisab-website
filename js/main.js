@@ -10,22 +10,22 @@
 
   // Screenshot viewer
   var G = {
-    munshi: { title: "Munshi", note: "Working software. Screenshots show a demo venue with sample data.", imgs: [
+    munshi: { title: "Munshi", note: "Screenshots show a demo venue with sample data.", imgs: [
       ["munshi-dashboard", "Dashboard with revenue, upcoming events and hall occupancy"],
       ["munshi-receipt-crop", "Booking receipt with PRA invoice number and QR code", "narrow"],
       ["munshi-reservations", "Reservations list with status and balances"],
       ["munshi-calendar-crop", "Month calendar showing open, held and booked halls"]] },
-    property: { title: "Property & Construction", note: "Working software. Screenshots use sample data.", imgs: [
+    property: { title: "Property & Construction", note: "Screenshots use sample data.", imgs: [
       ["property-dashboard", "Dashboard with cash position, capital deployed and active projects"],
       ["property-list", "Properties bought and tracked with company funds"],
       ["property-construction", "Construction projects, from kickoff to completion"]] },
-    pharma: { title: "PharmaFlow (demo)", note: "Interactive demo with sample data. Not a finished product.", imgs: [
+    pharma: { title: "PharmaFlow", note: "Screenshots show sample data.", imgs: [
       ["pharma-dashboard-crop", "Shop dashboard with sales, cash, khata and alerts"],
       ["pharma-mobile", "Owner phone app", "phone"]] },
-    school: { title: "Taleem (demo)", note: "Interactive demo with sample data. Not a finished product.", imgs: [
+    school: { title: "Taleem", note: "Screenshots show sample data.", imgs: [
       ["school-web", "Owner dashboard with fees, dues and attendance"],
       ["school-mobile", "Owner phone app", "phone"]] },
-    stock: { title: "StockFlow (demo)", note: "Interactive demo with sample data. Not a finished product. Working name.", imgs: [
+    stock: { title: "StockFlow", note: "Screenshots show sample data. Working name.", imgs: [
       ["stock-web", "Distribution dashboard with sales, receivables and stock alerts"]] }
   };
   var dlg = document.getElementById("viewer");

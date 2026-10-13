@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://hisabapp.online/sitemap.xml

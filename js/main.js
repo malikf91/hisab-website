@@ -51,16 +51,25 @@
   });
   if (dlg) dlg.addEventListener("click", function (e) { if (e.target === dlg) dlg.close(); });
 
-  // Contact form -> opens WhatsApp with the details filled in (no server needed)
+  // Contact form: sends an email through Web3Forms (no server needed)
+  var KEY = "7ac42cb0-2b10-4034-b64d-aca0830d2529";
   var f = document.getElementById("contact-form");
   if (f) f.addEventListener("submit", function (e) {
     e.preventDefault();
-    var d = new FormData(f), err = document.getElementById("form-error");
+    var d = new FormData(f), err = document.getElementById("form-error"), ok = document.getElementById("form-ok"), btn = f.querySelector("button[type=submit]");
     var name = (d.get("name") || "").trim(), phone = (d.get("phone") || "").trim();
-    if (!name || !phone) { err.hidden = false; return; }
-    err.hidden = true;
-    var text = "Assalam o Alaikum, my name is " + name + ". My business: " + d.get("type") + ". Phone: " + phone + "." +
-      ((d.get("msg") || "").trim() ? "\n" + d.get("msg").trim() : "");
-    window.open("https://wa.me/" + WA + "?text=" + encodeURIComponent(text), "_blank", "noopener");
+    ok.hidden = true;
+    function fail(msg) { err.textContent = msg; err.hidden = false; btn.disabled = false; btn.textContent = "Send message"; }
+    if (!name || !phone) { fail("Please enter your name and phone number."); return; }
+    err.hidden = true; btn.disabled = true; btn.textContent = "Sending...";
+    var body = { access_key: KEY, subject: "New enquiry from hisabapp.online", from_name: "Hisab website",
+      name: name, phone: phone, business: d.get("type"), message: (d.get("msg") || "").trim(), botcheck: d.get("botcheck") ? "on" : "" };
+    fetch("https://api.web3forms.com/submit", { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(body) })
+      .then(function (r) { return r.json(); })
+      .then(function (res) {
+        if (res && res.success) { f.reset(); ok.hidden = false; btn.disabled = false; btn.textContent = "Send message"; }
+        else { fail("Sorry, that did not go through. Please message us on WhatsApp: +92 322 5797089."); }
+      })
+      .catch(function () { fail("Sorry, that did not go through. Please message us on WhatsApp: +92 322 5797089."); });
   });
 })();

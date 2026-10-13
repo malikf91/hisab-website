@@ -135,3 +135,7 @@ dialog::backdrop{background:rgba(0,0,0,.65)}
 .browser img{border:0!important;border-radius:0!important;box-shadow:none!important;width:100%;display:block}
 .figs figure.narrow,#viewer-body .browser.narrow{max-width:560px;margin-inline:auto}
 .figs figure.phone img{border:0;box-shadow:0 10px 30px rgba(0,0,0,.18)}
+
+.trap{position:absolute;inset-inline-start:-9999px;width:1px;height:1px;opacity:0}
+.ok{color:var(--brand);font-weight:600;margin-top:12px}
+.btn:disabled{opacity:.7;cursor:wait}
